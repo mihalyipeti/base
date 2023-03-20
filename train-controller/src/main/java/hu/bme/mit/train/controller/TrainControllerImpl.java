@@ -46,7 +46,7 @@ public class TrainControllerImpl implements TrainController {
 		this.step = joystickPosition;		
 	}
 
-	public void emergencyBreak(int speed) {
+	public voi emergencyBreak(int speed) {
 		if(speed > speedLimit)
 			referenceSpeed = 0;
 	}
