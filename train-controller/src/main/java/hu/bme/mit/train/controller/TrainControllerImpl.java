@@ -49,6 +49,6 @@ public class TrainControllerImpl implements TrainController {
 	public void emergencyBreak(int speed) {
 		if(speed > speedLimit)
 			referenceSpeed = 0;
-	
+	}
 
 }
