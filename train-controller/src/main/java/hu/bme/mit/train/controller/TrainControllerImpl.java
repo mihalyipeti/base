@@ -51,11 +51,7 @@ public class TrainControllerImpl implements TrainController {
 	public void setSpeedLimit(int speedLimit) {
 		this.speedLimit = speedLimit;
 
-		if(speedLimit > 500 || speedLimit < 0){
-			setAlarmState(true);
-		} else {
-			setAlarmState(false);
-		}
+		
 
 		enforceSpeedLimit();
 	}

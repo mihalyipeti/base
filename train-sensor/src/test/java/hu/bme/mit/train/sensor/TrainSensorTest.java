@@ -42,6 +42,7 @@ public class TrainSensorTest {
         verify(mockTU, times(1)).setAlarmState(true);
     }
 
+
     @Test
     public void MaxSpeed_v2(){
         trainSensor.overrideSpeedLimit(501);
