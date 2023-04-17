@@ -8,6 +8,7 @@ public class TrainControllerImpl implements TrainController {
 	private int referenceSpeed = 0;
 	private int speedLimit = 0;
 	private Thread setspeed;
+	private boolean alarmState;
 
 	public TrainControllerImpl(){
 		setspeed = new Thread(){
@@ -16,6 +17,9 @@ public class TrainControllerImpl implements TrainController {
 				try{
 					followSpeed();
 					setspeed.sleep(2000);
+
+					
+
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -46,8 +50,14 @@ public class TrainControllerImpl implements TrainController {
 	@Override
 	public void setSpeedLimit(int speedLimit) {
 		this.speedLimit = speedLimit;
+
+		if(speedLimit > 500 || speedLimit < 0){
+			setAlarmState(true);
+		} else {
+			setAlarmState(false);
+		}
+
 		enforceSpeedLimit();
-		
 	}
 
 	private void enforceSpeedLimit() {
@@ -64,6 +74,16 @@ public class TrainControllerImpl implements TrainController {
 	public void emergencyBreak(int speed) {
 		if(speed > speedLimit)
 			referenceSpeed = 0;
+	}
+
+	@Override
+	public boolean getAlarmState() {
+		return alarmState;
+	}
+
+	@Override
+	public void setAlarmState(boolean alarmState) {
+		this.alarmState = alarmState;
 	}
 
 }
